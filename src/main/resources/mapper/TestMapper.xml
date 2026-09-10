@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.iandc.simpleweb.test.mapper.TestMapper">
+
+    <select id="selectTestList"
+            resultType="com.iandc.simpleweb.test.vo.TestVO">
+        SELECT
+            TEST_ID   AS testId,
+            TEST_NAME AS testName,
+            TEST_DESC AS testDesc,
+            USE_YN    AS useYn,
+            REG_DT    AS regDt
+        FROM TEST_T
+        ORDER BY TEST_ID
+    </select>
+
+    <insert id="insertTest">
+        INSERT INTO TEST_T (
+            TEST_ID,
+            TEST_NAME,
+            TEST_DESC,
+            USE_YN,
+            REG_DT
+        ) VALUES (
+            (SELECT NVL(MAX(TEST_ID), 0) + 1 FROM TEST_T),
+            #{testName},
+            #{testDesc},
+            #{useYn},
+            SYSDATE
+        )
+    </insert>
+
+</mapper>

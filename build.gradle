@@ -1,0 +1,44 @@
+plugins {
+	id 'java'
+	id 'war' // war프로젝트로 설정
+	id 'org.springframework.boot' version '4.0.8'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.iandc'
+version = '0.0.1-SNAPSHOT'
+description = 'simpleWeb'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17) // java 버전을 17로 설정
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-webmvc' // 우리 애플리케이션이 사용하는 라이브러리
+	compileOnly 'org.projectlombok:lombok' // 컴파일할 때만 필요
+	annotationProcessor 'org.projectlombok:lombok' // 컴파일 과정에서 어노테이션을 처리
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat-runtime' // 개발 시 내장 Tomcat 실행에 사용. 외부 Tomcat 배포 시 서버가 제공하는 런타임 의존성으로 취급.
+	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	testCompileOnly 'org.projectlombok:lombok'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper' // JSP 파일을 Java Servlet으로 변환하고 실행하는 JSP 엔진
+
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:4.0.0' // MyBatis를 Spring Boot에서 사용
+    runtimeOnly 'com.oracle.database.jdbc:ojdbc11' // Java 애플리케이션이 Oracle DB와 통신하기 위한 JDBC Driver
+
+    // JSP에서 c:forEach, c:if 같은 JSTL 태그를 사용하기 위한 라이브러리
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api'
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
