@@ -22,4 +22,15 @@ public class TestService {
     public void insertTest(TestVO testVO) {
         testMapper.insertTest(testVO);
     }
+
+    public TestVO selectTest(Long testId) {
+        return testMapper.selectTest(testId);
+    }
+
+    public void updateTest(TestVO testVO) {
+        testMapper.updateTest(testVO);
+    }
+    public void deleteTest(Long testId) {
+        testMapper.deleteTest(testId);
+    }
 }

@@ -16,7 +16,10 @@
 <h1>TEST_T 조회</h1>
 
 <p>조회 건수: ${testList.size()}</p>
-
+<div>
+    <a href="/test/write">추가</a>
+    <a href="/">메인으로</a>
+</div>
 <table border="1">
     <thead>
     <tr>
@@ -25,6 +28,8 @@
         <th>TEST_DESC</th>
         <th>USE_YN</th>
         <th>REG_DT</th>
+        <th>수정</th>
+        <th>삭제</th>
     </tr>
     </thead>
 
@@ -36,6 +41,16 @@
             <td>${test.testDesc}</td>
             <td>${test.useYn}</td>
             <td>${test.regDt}</td>
+            <td>
+                <a href="/test/update?testId=${test.testId}">수정</a>
+            </td>
+            <td>
+                <form action="/test/delete" method="post"
+                      onsubmit="return confirm('삭제하시겠습니까?');">
+                    <input type="hidden" name="testId" value="${test.testId}">
+                    <button type="submit">삭제</button>
+                </form>
+            </td>
         </tr>
     </c:forEach>
     </tbody>

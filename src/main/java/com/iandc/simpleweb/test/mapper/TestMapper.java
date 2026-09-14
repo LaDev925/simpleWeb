@@ -10,4 +10,7 @@ public interface TestMapper {
 
     List<TestVO> selectTestList();
     int insertTest(TestVO testVO);
+    TestVO selectTest(Long testId);
+    int updateTest(TestVO testVO);
+    int deleteTest(Long testId);
 }

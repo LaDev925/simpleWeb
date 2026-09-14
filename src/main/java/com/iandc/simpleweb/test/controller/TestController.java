@@ -37,4 +37,27 @@ public class TestController {
 
         return "redirect:/test/list";
     }
+
+    @GetMapping("/test/update")
+    public String testUpdate(Long testId, Model model) {
+
+        model.addAttribute("test", testService.selectTest(testId));
+
+        return "test/update";
+    }
+
+    @PostMapping("/test/update")
+    public String testUpdate(TestVO testVO) {
+
+        testService.updateTest(testVO);
+
+        return "redirect:/test/list";
+    }
+    @PostMapping("/test/delete")
+    public String testDelete(Long testId) {
+
+        testService.deleteTest(testId);
+
+        return "redirect:/test/list";
+    }
 }

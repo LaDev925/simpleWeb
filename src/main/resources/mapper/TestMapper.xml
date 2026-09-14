@@ -32,5 +32,28 @@
             SYSDATE
         )
     </insert>
+    <select id="selectTest"
+            resultType="com.iandc.simpleweb.test.vo.TestVO">
+        SELECT
+        TEST_ID   AS testId,
+        TEST_NAME AS testName,
+        TEST_DESC AS testDesc,
+        USE_YN    AS useYn,
+        REG_DT    AS regDt
+        FROM TEST_T
+        WHERE TEST_ID = #{testId}
+    </select>
 
+    <update id="updateTest">
+        UPDATE TEST_T
+        SET
+        TEST_NAME = #{testName},
+        TEST_DESC = #{testDesc},
+        USE_YN = #{useYn}
+        WHERE TEST_ID = #{testId}
+    </update>
+    <delete id="deleteTest">
+        DELETE FROM TEST_T
+        WHERE TEST_ID = #{testId}
+    </delete>
 </mapper>
