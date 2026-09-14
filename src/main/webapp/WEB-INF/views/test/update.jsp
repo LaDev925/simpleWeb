@@ -16,7 +16,7 @@
 <body>
 
 <h1>TEST 등록</h1>
-<form action="/test/update" method="post">
+<form action="${pageContext.request.contextPath}/test/update" method="post">
 
     <input type="hidden" name="testId" value="${test.testId}">
 

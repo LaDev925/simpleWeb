@@ -19,7 +19,7 @@
 <h1>Simple Web Project</h1>
 <p>JSP 화면 테스트 입니다.</p>
 <button type="button" id="testBtn" class="btn btn-primary">jQuery 테스트</button>
-<a href="/test/list">TEST_T 조회</a>
+<a href="${pageContext.request.contextPath}/test/list">TEST_T 조회</a>
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 

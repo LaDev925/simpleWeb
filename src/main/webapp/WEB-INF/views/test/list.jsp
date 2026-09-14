@@ -17,8 +17,8 @@
 
 <p>조회 건수: ${testList.size()}</p>
 <div>
-    <a href="/test/write">추가</a>
-    <a href="/">메인으로</a>
+    <a href="${pageContext.request.contextPath}/test/write">추가</a>
+    <a href="${pageContext.request.contextPath}/">메인으로</a>
 </div>
 <table border="1">
     <thead>
@@ -42,10 +42,10 @@
             <td>${test.useYn}</td>
             <td>${test.regDt}</td>
             <td>
-                <a href="/test/update?testId=${test.testId}">수정</a>
+                <a href="${pageContext.request.contextPath}/test/update?testId=${test.testId}">수정</a>
             </td>
             <td>
-                <form action="/test/delete" method="post"
+                <form action="${pageContext.request.contextPath}/test/delete" method="post"
                       onsubmit="return confirm('삭제하시겠습니까?');">
                     <input type="hidden" name="testId" value="${test.testId}">
                     <button type="submit">삭제</button>

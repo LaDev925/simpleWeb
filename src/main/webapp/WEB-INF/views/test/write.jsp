@@ -16,7 +16,7 @@
 <body>
 
 <h1>TEST 등록</h1>
-<form action="/test/write" method="post">
+<form action="${pageContext.request.contextPath}/test/write" method="post">
 
     <div>
         <label>이름</label>
